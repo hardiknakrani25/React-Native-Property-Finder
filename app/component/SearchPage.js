@@ -15,23 +15,16 @@ export default class SearchPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchString: "surat"
+      searchString: "london",
+      isLoading: false
     };
   }
 
   _onSearchTextChanged = event => {
     console.log("_onSearchTextChanged");
     this.setState({ searchString: event.nativeEvent.text });
-    console.log(
-      "Current :" +
-        this.state.searchString +
-        ", Next: " +
-        event.nativeEvent.text
-    );
   };
   render() {
-    console.log("SearchPage.render");
-
     return (
       <SafeAreaView style={styles.conatiner}>
         <Text style={styles.description}>Search house to buy!</Text>
