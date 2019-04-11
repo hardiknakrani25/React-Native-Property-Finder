@@ -24,12 +24,22 @@ export default class SearchPage extends React.Component {
           />
           <Button onPress={() => {}} color="#48BBEC" title="Go" />
         </View>
+        <View style={{ alignSelf: "center" }}>
+          <Image
+            source={require("../Resources/house.png")}
+            style={styles.image}
+          />
+        </View>
       </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  image: {
+    width: 217,
+    height: 138
+  },
   description: {
     marginBottom: 20,
     fontSize: 18,
@@ -44,6 +54,7 @@ const styles = StyleSheet.create({
   searchInput: {
     height: 36,
     padding: 4,
+    marginLeft: 10,
     marginRight: 5,
     flexGrow: 1,
     fontSize: 18,
