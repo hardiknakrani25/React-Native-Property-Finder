@@ -4,16 +4,8 @@ import { StyleSheet, View } from "react-native";
 import SearchPage from "./SearchPage";
 export default class index extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <SearchPage />
-      </View>
-    );
+    return <SearchPage />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
+const styles = StyleSheet.create({});
