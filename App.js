@@ -1,7 +1,6 @@
-"use strict";
-
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+
+import { Platform, StyleSheet, Text, View, NavigatorIOS } from "react-native";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -10,9 +9,27 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu"
 });
 
+class SearchPage extends Component {
+  render() {
+    return <Text style={styles.description}>Search for houses to buy!</Text>;
+  }
+}
+
 export default class App extends Component {
   render() {
     return <Text style={styles.description}>Search for houses to buy!</Text>;
+  }
+
+  render() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: "Property Finder",
+          component: SearchPage
+        }}
+      />
+    );
   }
 }
 
@@ -24,10 +41,7 @@ const styles = StyleSheet.create({
     marginTop: 65
   },
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    flex: 1
   },
   welcome: {
     fontSize: 20,
