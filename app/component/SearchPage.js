@@ -11,6 +11,24 @@ import {
   Image
 } from "react-native";
 
+function urlForQueryAndPage(key, value, pageNumber) {
+  const data = {
+    country: "uk",
+    pretty: "1",
+    encoding: "json",
+    listing_type: "buy",
+    action: "search_listings",
+    page: pageNumber
+  };
+  data[key] = value;
+
+  const querystring = Object.keys(data)
+    .map(key => key + "=" + encodeURIComponent(data[key]))
+    .join("&");
+
+  return "https://api.nestoria.co.uk/api?" + querystring;
+}
+
 export default class SearchPage extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +42,21 @@ export default class SearchPage extends React.Component {
     console.log("_onSearchTextChanged");
     this.setState({ searchString: event.nativeEvent.text });
   };
+
+  _executeQuery = query => {
+    console.log(query);
+    this.setState({ isLoading: true });
+  };
+
+  _onSearchPressed = () => {
+    const query = urlForQueryAndPage("place_name", this.state.searchString, 1);
+    this._executeQuery(query);
+  };
+
   render() {
+    const spinner = this.state.isLoading ? (
+      <ActivityIndicator size="large" />
+    ) : null;
     return (
       <SafeAreaView style={styles.conatiner}>
         <Text style={styles.description}>Search house to buy!</Text>
@@ -36,7 +68,7 @@ export default class SearchPage extends React.Component {
             onChange={this._onSearchTextChanged}
             placeholder="Search via name or postcode"
           />
-          <Button onPress={() => {}} color="#48BBEC" title="Go" />
+          <Button onPress={this._onSearchPressed} color="#48BBEC" title="Go" />
         </View>
         <View style={{ alignSelf: "center" }}>
           <Image
@@ -44,6 +76,7 @@ export default class SearchPage extends React.Component {
             style={styles.image}
           />
         </View>
+        {spinner}
       </SafeAreaView>
     );
   }
