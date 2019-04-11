@@ -12,7 +12,26 @@ import {
 } from "react-native";
 
 export default class SearchPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchString: "surat"
+    };
+  }
+
+  _onSearchTextChanged = event => {
+    console.log("_onSearchTextChanged");
+    this.setState({ searchString: event.nativeEvent.text });
+    console.log(
+      "Current :" +
+        this.state.searchString +
+        ", Next: " +
+        event.nativeEvent.text
+    );
+  };
   render() {
+    console.log("SearchPage.render");
+
     return (
       <SafeAreaView style={styles.conatiner}>
         <Text style={styles.description}>Search house to buy!</Text>
@@ -20,6 +39,8 @@ export default class SearchPage extends React.Component {
         <View style={styles.flowRight}>
           <TextInput
             style={styles.searchInput}
+            value={this.state.searchString}
+            onChange={this._onSearchTextChanged}
             placeholder="Search via name or postcode"
           />
           <Button onPress={() => {}} color="#48BBEC" title="Go" />
