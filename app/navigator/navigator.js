@@ -1,10 +1,13 @@
 // import React from "react";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import index from "../component/index";
-
+import SearchResults from "../component/SearchResults";
+import SearchPage from "../component/SearchPage";
+import Demo from "../../App";
 const AppNavigator = createStackNavigator(
   {
-    index
+    SearchPage,
+    SearchResults
   },
   {
     headerMode: "none"
