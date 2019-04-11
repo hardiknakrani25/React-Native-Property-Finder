@@ -4,10 +4,12 @@ import index from "../component/index";
 import SearchResults from "../component/SearchResults";
 import SearchPage from "../component/SearchPage";
 import Demo from "../../App";
+import PropertyDetails from "../component/propertyDetails";
 const AppNavigator = createStackNavigator(
   {
     SearchPage,
-    SearchResults
+    SearchResults,
+    PropertyDetails
   },
   {
     headerMode: "none"
